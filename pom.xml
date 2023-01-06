@@ -98,6 +98,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+                <finalName>PortfolioBackend</finalName>
 	</build>
 
 </project>

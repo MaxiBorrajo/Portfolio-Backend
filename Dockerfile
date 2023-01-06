@@ -1,4 +1,4 @@
-FROM amazoncorretto:11-alpine-jdk
+FROM amazoncorretto:1.8-alpine-jdk
 
 MAINTAINER MaxiBorrajo
 
