@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController//annotation que indica que esto es una api rest
 @RequestMapping("info")//es como un prefijo de la url para esta, /user/* es algo de esta api
-@CrossOrigin(origins = "https://my-portfolio-6385d.web.app")
+@CrossOrigin
 public class InfoUserController {
     @Autowired//Annotation que se encarga de inicializar lo de abajo
     private InfoUserServiceImpl infoService;//servicio que maneja la bd de usuarios
