@@ -29,7 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController//annotation que indica que esto es una api rest
 @RequestMapping("photo")//es como un prefijo de la url para esta, /user/* es algo de esta api
-@CrossOrigin
+@CrossOrigin(origins = {"https://my-portfolio-6385d.web.app", "https://maxiborrajo-portfolio-service.onrender.com",
+"http://localhost:4200"})
 public class PhotoProjectController {
     @Autowired//Annotation que se encarga de inicializar lo de abajo
     private PhotoProjectServiceImpl photoService;//servicio que maneja la bd de usuarios
