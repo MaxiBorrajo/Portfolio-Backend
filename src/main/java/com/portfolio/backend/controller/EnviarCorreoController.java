@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("contacto")
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "true",
+exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
 public class EnviarCorreoController {
     @Autowired
     EnviarCorreoService correoService;

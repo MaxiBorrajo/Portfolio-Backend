@@ -46,7 +46,7 @@ public class SecurityConfig{
         que es el jwtfilter que depende del token*/
          return http
             .csrf().disable()
-            .cors().disable()
+            .cors().and()
             .authorizeHttpRequests()
             .antMatchers("/auth/*").permitAll()
             .antMatchers("/contacto/*").permitAll()
@@ -76,13 +76,5 @@ public class SecurityConfig{
         return new BCryptPasswordEncoder();
     }
     
-    @Bean
-        public WebMvcConfigurer corsConfigurer(){
-            return new WebMvcConfigurer(){
-                @Override
-                public void addCorsMappings(CorsRegistry registry){
-                    registry.addMapping("/**").allowedOrigins("https://my-portfolio-6385d.firebaseapp.com");
-                }
-            };
-        }
+    
 }
