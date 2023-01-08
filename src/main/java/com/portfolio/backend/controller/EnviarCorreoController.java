@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("contacto")
-@CrossOrigin(origins = {"https://my-portfolio-6385d.web.app", "https://maxiborrajo-portfolio-service.onrender.com",
-"http://localhost:4200"})
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 public class EnviarCorreoController {
     @Autowired
     EnviarCorreoService correoService;

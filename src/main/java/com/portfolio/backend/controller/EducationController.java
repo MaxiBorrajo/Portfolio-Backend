@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController//annotation que indica que esto es una api rest
 @RequestMapping("education")//es como un prefijo de la url para esta, /user/* es algo de esta api
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 public class EducationController {
     @Autowired//Annotation que se encarga de inicializar lo de abajo
     private EducationUserServiceImpl eduService;//servicio que maneja la bd de usuarios
@@ -35,19 +36,16 @@ public class EducationController {
     private UserController userController;
     
     @GetMapping("{username}")
-    @CrossOrigin(origins = "https://my-portfolio-6385d.web.app")
     public List<EducationUser> getEducationUserByUsername(@PathVariable(value = "username") String username){
         return eduService.findEducationUserByUsername(username);
     }
     
     @GetMapping
-    @CrossOrigin(origins = "https://my-portfolio-6385d.web.app")
     public EducationUser getEducationUserById(@RequestParam Long id){
         return eduService.findEducationUserById(id);
     }
     
     @PostMapping
-    @CrossOrigin(origins = "https://my-portfolio-6385d.web.app")
     public ResponseEntity<String> saveEducationUser(@RequestBody EducationUser educationUser, @RequestParam String username){
         UserEntity user = userController.getUser(username);
         educationUser.setUserEntity(user);
@@ -57,7 +55,6 @@ public class EducationController {
 
     
     @DeleteMapping("{id}")
-    @CrossOrigin(origins = "https://my-portfolio-6385d.web.app")
     public ResponseEntity<String> deleteEducationUser(@PathVariable(value = "id") Long id){
         eduService.deleteEducationUserById(id);
         return new ResponseEntity<>("Delete succesful", HttpStatus.OK);
