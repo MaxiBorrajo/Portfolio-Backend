@@ -12,14 +12,4 @@ public class PortfolioBackend {
 	public static void main(String[] args) {
 		SpringApplication.run(PortfolioBackend.class, args);
 	}
-        
-        @Bean
-        public WebMvcConfigurer corsConfigurer(){
-            return new WebMvcConfigurer(){
-                @Override
-                public void addCorsMappings(CorsRegistry registry){
-                    registry.addMapping("/**").allowedOrigins("https://my-portfolio-6385d.firebaseapp.com");
-                }
-            };
-        }
 }
