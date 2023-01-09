@@ -22,22 +22,14 @@ public class EducationUserServiceImpl implements EducationUserService{
     @Autowired
     private EducationUserRepository eduRepo;
     
-    @Autowired
-    private UserRepository userRepo;
-    
     @Override
     public EducationUser findEducationUserById(Long id) {
        return eduRepo.findById(id).orElse(null);
     }
-
+    
     @Override
-    public List<EducationUser> findEducationUserByUsername(String username) {
-        UserEntity user = userRepo.findByUserName(username).orElse(null);
-        if(user != null){
-            return eduRepo.findByUserEntity(user).orElse(null);
-        }else{
-            return null;
-        }
+    public List<EducationUser> findEducationUserByUser(UserEntity user) {
+        return eduRepo.findByUserEntity(user).orElse(null);
     }
 
     @Override
@@ -49,5 +41,7 @@ public class EducationUserServiceImpl implements EducationUserService{
     public void deleteEducationUserById(Long id) {
         eduRepo.deleteById(id);
     }
+
+    
     
 }

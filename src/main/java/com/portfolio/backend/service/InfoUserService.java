@@ -5,6 +5,7 @@
 package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.InfoUser;
+import com.portfolio.backend.model.UserEntity;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface InfoUserService {
     public InfoUser findInfoUserById(Long id);
-    public InfoUser findInfoUserByUsername(String username);
+    public InfoUser findInfoUserByUser(UserEntity user);
     public void saveInfoUser(InfoUser infoUser);
     public void deleteInfoUserByUsername(String username);
 }

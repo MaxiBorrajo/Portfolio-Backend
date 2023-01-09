@@ -38,7 +38,8 @@ public class EducationController {
     
     @GetMapping("{username}")
     public List<EducationUser> getEducationUserByUsername(@PathVariable(value = "username") String username){
-        return eduService.findEducationUserByUsername(username);
+        UserEntity user = userController.getUser(username);
+        return eduService.findEducationUserByUser(user);
     }
     
     @GetMapping

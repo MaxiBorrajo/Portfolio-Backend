@@ -40,7 +40,8 @@ public class ProjectController {
     
     @GetMapping("{username}")
     public List<Project> getProjectsByUsername(@PathVariable(value = "username") String username){
-        return projectService.findProjectByUsername(username);
+        UserEntity user = userController.getUser(username);
+        return projectService.findProjectByUser(user);
     }
     
     @GetMapping

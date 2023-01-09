@@ -18,26 +18,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Exp_UserServiceImpl implements Exp_UserService{
-    
-    @Autowired
-    private UserRepository userRepo;
-    
+
     @Autowired
     private ExpUserRepository expRepo;
 
     @Override
     public Exp_User findExpUserById(Long id) {
         return expRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Exp_User> findExpUserByUsername(String username) {
-        UserEntity user = userRepo.findByUserName(username).orElse(null);
-        if(user != null){
-            return expRepo.findByUserEntity(user).orElse(null);
-        }else{
-            return null;
-        }
     }
 
     @Override
@@ -48,6 +35,11 @@ public class Exp_UserServiceImpl implements Exp_UserService{
     @Override
     public void deleteExpUserById(Long id) {
         expRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Exp_User> findExpUserByUser(UserEntity user) {
+        return expRepo.findByUserEntity(user).orElse(null);
     }
     
 }

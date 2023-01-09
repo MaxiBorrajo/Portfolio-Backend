@@ -5,6 +5,7 @@
 package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Project;
+import com.portfolio.backend.model.UserEntity;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface ProjectService {
     public Project findProjectById(Long id);
-    public List<Project> findProjectByUsername(String username);
+    public List<Project> findProjectByUser(UserEntity user);
     public void saveProject(Project project);
     public void deleteProjectById(Long id);
 }

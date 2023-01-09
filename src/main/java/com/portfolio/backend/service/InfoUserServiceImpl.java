@@ -30,16 +30,6 @@ public class InfoUserServiceImpl implements InfoUserService{
     }
 
     @Override
-    public InfoUser findInfoUserByUsername(String username) {
-        UserEntity user = userRepo.findByUserName(username).orElse(null);
-        if(user != null){
-            return infoRepo.findByUserEntity(user).orElse(null);
-        }else{
-            return null;
-        }
-    }
-
-    @Override
     public void saveInfoUser(InfoUser infoUser) {
         infoRepo.save(infoUser);
     }
@@ -50,5 +40,10 @@ public class InfoUserServiceImpl implements InfoUserService{
         if(user != null && user.getInfoUser() != null){
             infoRepo.deleteById(user.getInfoUser().getId_InfoUser());
         }
+    }
+
+    @Override
+    public InfoUser findInfoUserByUser(UserEntity user) {
+        return infoRepo.findByUserEntity(user).orElse(null);
     }
 }

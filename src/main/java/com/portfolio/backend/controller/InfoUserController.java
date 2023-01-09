@@ -43,8 +43,8 @@ public class InfoUserController {
     @GetMapping("{username}")
     public InfoUser getInfoUserByUsername(@PathVariable(value = "username")
     String username){
-        InfoUser infoUser = infoService.findInfoUserByUsername(username);
-        return infoUser;
+        UserEntity user = userController.getUser(username);
+        return infoService.findInfoUserByUser(user);
     }
     
     @PostMapping

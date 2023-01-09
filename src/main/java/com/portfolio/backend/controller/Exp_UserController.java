@@ -39,7 +39,8 @@ public class Exp_UserController {
     
     @GetMapping("{username}")
     public List<Exp_User> getExpUserByUsername(@PathVariable(value = "username") String username){
-        return expService.findExpUserByUsername(username);
+        UserEntity user = userController.getUser(username);
+        return expService.findExpUserByUser(user);
     }
     
     @GetMapping

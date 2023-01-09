@@ -5,6 +5,7 @@
 package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Skill;
+import com.portfolio.backend.model.UserEntity;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface SkillService {
     public Skill findSkillById(Long id);
-    public List<Skill> findSkillByUsername(String username);
+    public List<Skill> findSkillByUser(UserEntity user);
     public void saveSkill(Skill skill);
     public void deleteSkillById(Long id);
 }

@@ -22,22 +22,9 @@ public class ProjectServiceImpl implements ProjectService{
     @Autowired
     private ProjectRepository projectRepo;
     
-    @Autowired
-    private UserRepository userRepo;
-    
     @Override
     public Project findProjectById(Long id) {
         return projectRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Project> findProjectByUsername(String username) {
-        UserEntity user = userRepo.findByUserName(username).orElse(null);
-        if(user != null){
-            return projectRepo.findByUserEntity(user).orElse(null);
-        }else{
-            return null;
-        }
     }
 
     @Override
@@ -48,6 +35,11 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void deleteProjectById(Long id) {
         projectRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Project> findProjectByUser(UserEntity user) {
+        return projectRepo.findByUserEntity(user).orElse(null);
     }
     
 }

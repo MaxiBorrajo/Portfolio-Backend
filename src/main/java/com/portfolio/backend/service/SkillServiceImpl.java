@@ -20,23 +20,10 @@ import org.springframework.stereotype.Service;
 public class SkillServiceImpl implements SkillService{
     @Autowired
     private SkillRepository skillRepo;
-    
-    @Autowired
-    private UserRepository userRepo;
 
     @Override
     public Skill findSkillById(Long id) {
         return skillRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Skill> findSkillByUsername(String username) {
-        UserEntity user = userRepo.findByUserName(username).orElse(null);
-        if(user != null){
-            return skillRepo.findByUserEntity(user).orElse(null);
-        }else{
-            return null;
-        }
     }
 
     @Override
@@ -47,5 +34,10 @@ public class SkillServiceImpl implements SkillService{
     @Override
     public void deleteSkillById(Long id) {
         skillRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Skill> findSkillByUser(UserEntity user) {
+        return skillRepo.findByUserEntity(user).orElse(null);
     }
 }

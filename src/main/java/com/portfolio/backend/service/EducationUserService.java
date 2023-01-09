@@ -5,6 +5,7 @@
 package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.EducationUser;
+import com.portfolio.backend.model.UserEntity;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface EducationUserService {
     public EducationUser findEducationUserById(Long id);
-    public List<EducationUser> findEducationUserByUsername(String username);
+    public List<EducationUser> findEducationUserByUser(UserEntity user);
     public void saveEducationUser(EducationUser educationUser);
     public void deleteEducationUserById(Long id);
 }

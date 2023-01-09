@@ -38,7 +38,8 @@ public class SkillController {
     
     @GetMapping("{username}")
     public List<Skill> getSkillByUsername(@PathVariable(value = "username") String username){
-        return skillService.findSkillByUsername(username);
+        UserEntity user = userController.getUser(username);
+        return skillService.findSkillByUser(user);
     }
     
     @GetMapping
