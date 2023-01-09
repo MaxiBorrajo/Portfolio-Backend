@@ -28,8 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController//annotation que indica que esto es una api rest
 @RequestMapping("exp_user")//es como un prefijo de la url para esta, /user/* es algo de esta api
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "true",
-exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+@CrossOrigin(origins= {"*"}, exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
 public class Exp_UserController {
     @Autowired//Annotation que se encarga de inicializar lo de abajo
     private Exp_UserServiceImpl expService;//servicio que maneja la bd de usuarios
