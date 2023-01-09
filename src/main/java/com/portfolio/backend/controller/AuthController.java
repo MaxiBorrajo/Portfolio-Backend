@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController //annotation que indica que esto es una api rest
 @RequestMapping("auth") //es como un prefijo de la url para esta, /auth/* es algo de esta api
-@CrossOrigin("*")
+@CrossOrigin(origins="*")
 public class AuthController {
     
     @Autowired //Annotation que se encarga de inicializar lo de abajo
