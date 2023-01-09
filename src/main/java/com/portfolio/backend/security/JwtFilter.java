@@ -60,6 +60,7 @@ public class JwtFilter extends OncePerRequestFilter {
                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
            }
         }
+        response.setHeader("Access-Control-Allow-Origin", "my-portfolio-6385d.firebaseapp.com");
         filterChain.doFilter(request, response);
     }
     
