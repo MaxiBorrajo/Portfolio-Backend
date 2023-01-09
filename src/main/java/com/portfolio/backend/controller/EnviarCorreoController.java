@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("contacto")
-@CrossOrigin(origins= {"*"}, exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+@CrossOrigin(origins={"my-portfolio-6385d.web.app", "my-portfolio-6385d.firebaseapp.com"})
 public class EnviarCorreoController {
     @Autowired
     EnviarCorreoService correoService;

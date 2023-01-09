@@ -46,7 +46,7 @@ public class SecurityConfig{
         que es el jwtfilter que depende del token*/
          return http
             .csrf().disable()
-            .cors().and()
+            .cors().disable()
             .authorizeHttpRequests()
             .antMatchers("/auth/*").permitAll()
             .antMatchers("/contacto/*").permitAll()
