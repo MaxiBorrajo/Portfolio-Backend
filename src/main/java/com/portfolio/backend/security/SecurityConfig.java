@@ -50,6 +50,7 @@ public class SecurityConfig{
             .authorizeHttpRequests()
             .antMatchers("/auth/*").permitAll()
             .antMatchers("/contacto/*").permitAll()
+            .antMatchers("/role/*").permitAll()
             .antMatchers(HttpMethod.GET).permitAll()
             .anyRequest().authenticated()
             .and()

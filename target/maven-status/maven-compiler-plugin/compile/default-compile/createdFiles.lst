@@ -20,6 +20,7 @@ com\portfolio\backend\security\JwtFilter.class
 com\portfolio\backend\model\Skill.class
 com\portfolio\backend\security\CustomUserDetailsServiceImpl.class
 com\portfolio\backend\service\InfoUserService.class
+com\portfolio\backend\controller\RoleController.class
 com\portfolio\backend\controller\SkillController.class
 com\portfolio\backend\PortfolioBackend.class
 com\portfolio\backend\controller\ProjectController.class
