@@ -26,6 +26,7 @@ public class EducationUser {
     private String title;
     private String institution;
     private String inst_brand;
+    private String cloud_id;
     private String period;
     @ManyToOne(optional = false,
             fetch = FetchType.EAGER)

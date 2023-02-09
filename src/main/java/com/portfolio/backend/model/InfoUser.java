@@ -30,6 +30,7 @@ public class InfoUser {
     private String name;
     private String last_name;
     private String photo;
+    private String cloud_id;
     private String title;
     @Column(name="description", length = 100000)
     @Lob

@@ -6,7 +6,13 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.InfoUser;
 import com.portfolio.backend.model.UserEntity;
+import com.portfolio.backend.service.ImageService;
 import com.portfolio.backend.service.InfoUserServiceImpl;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -34,6 +41,9 @@ public class InfoUserController {
     @Autowired
     private UserController userController;
     
+    @Autowired
+    private ImageService imgService;
+    
     @GetMapping
     public InfoUser getInfoUserById(@RequestParam Long id){
         return infoService.findInfoUserById(id);
@@ -47,17 +57,40 @@ public class InfoUserController {
     }
     
     @PostMapping
-    public ResponseEntity<String> saveInfoUser(@RequestBody InfoUser infoUser, @RequestParam String username){
+    public ResponseEntity<String> saveInfoUser(@RequestBody InfoUser infoUser, @RequestParam String username) throws IOException, Exception{
         UserEntity user = userController.getUser(username);
         infoUser.setUserEntity(user);
         infoService.saveInfoUser(infoUser);
         return new ResponseEntity<>("Save succesful", HttpStatus.OK);
     }
     
+    @PostMapping("photo")
+    public ResponseEntity<String> saveInfoUserPhoto(@RequestParam MultipartFile multipartFile, @RequestParam String username) throws IOException, Exception{
+        UserEntity user = userController.getUser(username);
+        InfoUser infoUser = infoService.findInfoUserByUser(user);
+        BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
+        Map result = imgService.upload(multipartFile);
+        infoUser.setPhoto((String) result.get("url"));
+        infoUser.setCloud_id((String) result.get("public_id"));
+        infoService.saveInfoUser(infoUser);
+        return new ResponseEntity<>("Save succesful", HttpStatus.OK);
+    }
+    
     
     @DeleteMapping("{username}")
-    public ResponseEntity<String> deleteInfoUser(@PathVariable(value = "username") String username){
+    public ResponseEntity<String> deleteInfoUser(@PathVariable(value = "username") String username) throws IOException{
+        UserEntity user = userController.getUser(username);
+        InfoUser infoUser = infoService.findInfoUserByUser(user);
+        Map result = imgService.delete(infoUser.getCloud_id());
         infoService.deleteInfoUserByUsername(username);
+        return new ResponseEntity<>("Delete succesful", HttpStatus.OK);
+    }
+    
+    @DeleteMapping("photo/{username}")
+    public ResponseEntity<String> deletePhotoInfoUser(@PathVariable(value = "username") String username) throws IOException{
+        UserEntity user = userController.getUser(username);
+        InfoUser infoUser = infoService.findInfoUserByUser(user);
+        Map result = imgService.delete(infoUser.getCloud_id());
         return new ResponseEntity<>("Delete succesful", HttpStatus.OK);
     }
     /*

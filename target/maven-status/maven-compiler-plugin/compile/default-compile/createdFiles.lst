@@ -40,6 +40,7 @@ com\portfolio\backend\service\ProjectServiceImpl.class
 com\portfolio\backend\security\SecurityConfig.class
 com\portfolio\backend\service\EducationUserServiceImpl.class
 com\portfolio\backend\service\UserEntityService.class
+com\portfolio\backend\service\ImageService.class
 com\portfolio\backend\model\EnviarCorreo.class
 com\portfolio\backend\service\SkillService.class
 com\portfolio\backend\model\PhotoProject.class
