@@ -63,7 +63,6 @@ public class PhotoProjectController {
         Project project = projectController.getProjectById(id_proyecto);
         PhotoProject photoProject = new PhotoProject();
         photoProject.setProject(project);
-        BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
         Map result = imgService.upload(multipartFile);
         photoProject.setLink((String) result.get("url"));
         photoProject.setName((String) result.get("public_id"));
