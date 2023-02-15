@@ -6,6 +6,7 @@ com\portfolio\backend\repository\ExpUserRepository.class
 com\portfolio\backend\service\Exp_UserService.class
 com\portfolio\backend\service\Exp_UserServiceImpl.class
 com\portfolio\backend\service\InfoUserServiceImpl.class
+com\portfolio\backend\controller\ControllerAdvice.class
 com\portfolio\backend\service\EducationUserService.class
 com\portfolio\backend\model\Exp_User.class
 com\portfolio\backend\dto\PhotoProjectDto.class
@@ -15,6 +16,7 @@ com\portfolio\backend\controller\PhotoProjectController.class
 com\portfolio\backend\security\JwtUtilService.class
 com\portfolio\backend\service\PhotoProjectService.class
 com\portfolio\backend\service\PhotoProjectServiceImpl.class
+com\portfolio\backend\dto\ErrorDto.class
 com\portfolio\backend\repository\SkillRepository.class
 com\portfolio\backend\security\JwtFilter.class
 com\portfolio\backend\model\Skill.class
